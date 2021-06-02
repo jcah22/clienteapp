@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container">
+    <div class="card bg-light">
+        <div class="card-header bg-dark text-white" th:text="${titulo}">
+
+        </div>
+        <div class="card-body">
+
+
+
+
+    <form th:action="@{/views/clientes/save}" th:object="${cliente}" method="post">
+        <div class="mb-3 ">
+            <input type="hidden" th:field="*{id}">
+            <label for="nombres" class="form-label col-md-2">Nombres:</label>
+            <input type="text" th:field="*{nombres}" class="form-control form-control-sm col-md-6" id="nombres" >
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('nombres')}" th:errors=""*{nombres}></small>
+        </div>
+        <div class="mb-3 ">
+            <label for="apellidos" class="form-label col-md-2">Apellidos:</label>
+            <input type="text" th:field="*{apellidos}" class="form-control form-control-sm col-md-6" id="apellidos" >
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('apellidos')}" th:errors=""*{apellidos}></small>
+        </div>
+        <div class="mb-3 ">
+            <label for="telefono" class="form-label col-md-2">Telefono:</label>
+            <input type="text" th:field="*{telefono}" class="form-control form-control-sm col-md-6" id="telefono" >
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors=""*{telefono}></small>
+        </div>
+        <div class="mb-3 ">
+            <label for="email" class="form-label col-md-2">Email:</label>
+            <input type="text" th:field="*{email}" class="form-control form-control-sm col-md-6" id="email" >
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors=""*{email}></small>
+        </div>
+        <div class="mb-3 ">
+            <label for="ciudad" class="form-label col-md-2">Ciudad:</label>
+            <select th:field="*{ciudad}" class="form-select" aria-label="Default select example col-md-6" id="ciudad" >
+                <option th:each="ciudad : ${ciudades}"
+                        th:value="${ciudad.id}"
+                        th:text="${ciudad.ciudad}"
+
+                ></option>
+
+
+            </select>
+            <small></small>
+        </div>
+        <div class="card-footer bg-dark">
+            <input type="submit" class="btn btn-primary btn-sm" value="Guardar"/>
+        </div>
+
+
+    </form>
+        </div>
+
+    </div>
+</div>
+
+
+<footer th:replace="plantilla/template:: footer"></footer>
+</body>
+</html>

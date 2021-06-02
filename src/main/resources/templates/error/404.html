@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+<div class="container">
+    <div class="container">
+        <div class="card">
+            <div  class="card-header text-center text-danger">
+                <span th:text="${error}"></span>- <span th:text="${status}"></span>
+            </div>
+            <div class="card-body text-center">
+
+                <img
+                     th:src="@{/images/ipn.png}" width="350px" height="350px"/>
+            </div>
+
+        </div>
+        <div class="card-footer text-center">
+            <h3>La pagina solicitada no existe</h3>
+            <br>
+            <button  class="btn btn-success" onclick="goBack()">&laquo;Regresar</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<footer th:replace="plantilla/template:: footer"></footer>
+        <script>
+            function goBack(){
+                window.history.back();
+            }
+        </script>
+</body>
+</html>
